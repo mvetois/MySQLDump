@@ -1,9 +1,20 @@
 import mysqldump, { DumpReturn } from "mysqldump";
 import * as dotenv from "dotenv";
 
+import { getDate } from "./functions"
+
 dotenv.config();
 
+const fileFormat = (name : string) : string => {
+    var ret : string = name;
+
+    if (ret.includes("{date}"))
+        ret = ret.replace("{date}", getDate());
+    return (ret);
+};
+
 const dump = async () : Promise<DumpReturn> => {
+
     const res : DumpReturn = await mysqldump({
         connection: {
             host: process.env.HOST || "localhost" ,
@@ -12,7 +23,7 @@ const dump = async () : Promise<DumpReturn> => {
             password: process.env.PASS || "",
             database: process.env.DB || "",
         },
-        dumpToFile: process.env.FILE || "./dump.sql",
+        dumpToFile: fileFormat(String(process.env.FILE) || "./dump.sql"),
     });
     return (res);
 };
