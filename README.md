@@ -15,6 +15,7 @@ PASS=... # Database user password
 DB=... # Database name
 FILE=... # Path and name of the dump file
 ```
+In the file name value (`FILE=...`), you can add the date with the `{date}` tag to place where you want. It will be displayed in the format YYYY_MM_DD_HH, where the time is UTC
 
 ## How to run
 
