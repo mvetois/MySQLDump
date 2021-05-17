@@ -1,5 +1,5 @@
 # MySQLDump
-Backup system for a MySQL database
+Backup system for a MySQL database. This project will create a SQL file to reset a database if needed.
 
 ## How to configure
 
